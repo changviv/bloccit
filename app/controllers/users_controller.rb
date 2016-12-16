@@ -1,12 +1,22 @@
 class UsersController < ApplicationController
+  skip_before_filter :verify_authenticity_token
+
   def new
     @user = User.new
+  end
+
+  def confirm
+    @user = User.new
+    @user.name = params[:user][:name]
+    @user.email = params[:user][:email]
+    @user.password = params[:user][:password]
+    @user.password_confirmation = params[:user][:password_confirmation]
   end
 
   def create
     @user = User.new
     @user.name = params[:user][:name]
-    @user.email = params[:user][:email]
+    @user.email = params{[:user][:email]}
     @user.password = params[:user][:password]
     @user.password_confirmation = params[:user][:password_confirmation]
 
@@ -18,4 +28,4 @@ class UsersController < ApplicationController
        render :new
      end
    end
-  end
+end
