@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :posts
-  
+
   before_save { self.email = email.downcase if email.present? }
   before_save { self.role ||= :member }
 
@@ -18,5 +18,5 @@ class User < ApplicationRecord
 # #6
   has_secure_password
 
-  enum role: [:member, :admin]
+  enum role: [:member, :admin, :moderator]
 end
