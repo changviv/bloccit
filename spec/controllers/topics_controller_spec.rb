@@ -1,8 +1,16 @@
 require 'rails_helper'
+include RandomData
+include SessionsHelper
 
 RSpec.describe TopicsController, type: :controller do
   let(:my_topic) { Topic.create!(name: RandomData.random_sentence, description: RandomData.random_paragraph) }
 
+  before do
+     user = User.create!(name: 'Bloccit User', email: 'user@bloccit.com', password: 'helloworld', role: :admin)
+    create_session(user)
+  end
+
+   context 'guest' do
      describe "GET index" do
        it "returns http success" do
          get :index
@@ -120,4 +128,5 @@ RSpec.describe TopicsController, type: :controller do
        expect(response).to redirect_to topics_path
      end
    end
+ end
 end

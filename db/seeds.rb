@@ -1,4 +1,5 @@
 require 'random_data'
+include SessionsHelper
 # Create Users
 5.times do
   User.create!(
@@ -8,6 +9,7 @@ require 'random_data'
   password: RandomData.random_sentence
   )
 end
+
 users = User.all
 
 # Create Topics
@@ -22,7 +24,7 @@ users = User.all
 # Create Posts
 50.times do
   Post.create!(
-    user:   users.sample,
+    user:  users.sample,
     topic: topics.sample,
     title: RandomData.random_sentence,
     body: RandomData.random_paragraph
@@ -34,6 +36,7 @@ posts = Post.all
 # Create Comments
 100.times do
   Comment.create!(
+    user: users.sample,
     post: posts.sample,
     body: RandomData.random_paragraph
   )
