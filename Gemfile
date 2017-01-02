@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
  # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
- gem 'rails', '5.0.0.1'
+ gem 'rails', git: 'https://github.com/rails/rails', branch: '5-0-stable'
  gem 'listen', '~> 3.1.5'
 
  # #1
