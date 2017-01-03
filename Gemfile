@@ -3,7 +3,7 @@ source 'https://rubygems.org'
  # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
  gem 'rails', git: 'https://github.com/rails/rails', branch: '5-0-stable'
  gem 'listen', '~> 3.1.5'
- ruby '2.2.6'
+ ruby '2.3.1'
 
  # #1
  group :production do
@@ -19,6 +19,7 @@ source 'https://rubygems.org'
  group :development, :test do
    gem 'rspec-rails', '~> 3.0'
    gem 'shoulda'
+   gem 'factory_girl_rails', '~> 4.0'
    gem 'rails-controller-testing'
    gem 'autoprefixer-rails'
  end
