@@ -1,6 +1,7 @@
 class VotesController < ApplicationController
   before_action :require_sign_in
-
+  skip_before_filter :verify_authenticity_token
+  
   def up_vote
     update_vote(1)
     redirect_to :back

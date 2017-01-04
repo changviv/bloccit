@@ -35,17 +35,6 @@ users = User.all
    rand(1..5).times { post.votes.create!(value: [-1, 1].sample, user: users.sample) }
 end
 
-posts = Post.all
-
-# Create Comments
-100.times do
-  Comment.create!(
-    user: users.sample,
-    post: posts.sample,
-    body: RandomData.random_paragraph
-  )
-end
-
 # Create an admin user
  admin = User.create!(
    name:     'Admin User',
@@ -60,6 +49,18 @@ end
    email:    'member@example.com',
    password: 'helloworld'
  )
+
+users = User.all
+posts = Post.all
+
+# Create Comments
+100.times do
+  Comment.create!(
+    user: users.sample,
+    post: posts.sample,
+    body: RandomData.random_paragraph
+  )
+end
 
 puts "Seed finished"
 puts "#{User.count} users created"

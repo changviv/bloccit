@@ -9,6 +9,10 @@ RSpec.describe Post, type: :model do
      let(:user) { create(:user) }
      let(:post) { create(:post) }
 
+     before do
+       create_user
+     end
+
 
      it { is_expected.to have_many(:comments) }
      it { is_expected.to have_many(:votes) }
@@ -68,6 +72,7 @@ RSpec.describe Post, type: :model do
       end
 
       it "updates the rank when an up vote is created" do
+        user = User.create
         old_rank = post.rank
         post.votes.create!(value: 1)
         expect(post.rank).to eq (old_rank + 1)
