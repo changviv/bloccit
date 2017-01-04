@@ -1,11 +1,13 @@
 class CommentsController < ApplicationController
   before_action :require_sign_in
   before_action :authorize_user, only: :destroy
+  skip_before_filter :verify_authenticity_token
 
   def create
     @post = Post.find(params[:post_id])
     comment = @post.comments.new(comment_params)
-    comment.user = current_user
+
+    comment.user = @current_user
 
     if comment.save
       flash[:notice] = 'Comment saved successfully'

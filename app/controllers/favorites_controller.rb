@@ -1,5 +1,6 @@
 class FavoritesController < ApplicationController
   before_action :require_sign_in
+  skip_before_filter :verify_authenticity_token
 
    def create
      post = Post.find(params[:post_id])
